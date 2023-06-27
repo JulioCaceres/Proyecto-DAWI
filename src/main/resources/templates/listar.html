@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>Lista de Profesores</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/Index :: head">
+    
+   
     <style>
         .profesor-card {
             margin-bottom: 20px;
@@ -25,7 +26,13 @@
     </style>
 </head>
 <body>
-    <div class="container">
+
+	
+	<nav th:replace="layout/Index :: nav"></nav>
+	
+	
+	
+    <div class="container pt-5">
         <h1>Lista de Profesores</h1>
         
         <div class="row mb-4">
@@ -39,9 +46,9 @@
         <a th:href="@{/profesores/registrar}" class="btn btn-success">Registrar Profesor</a>
 
         <div id="profesor-container">
-            <div class="row">
+            <div class="row pt-3">
                 <div class="col-md-4" th:each="profesor : ${profesores}">
-                    <div class="card profesor-card" th:id="${profesor.codigo_prof}">
+                    <div class="card profesor-card mt-3" th:id="${profesor.codigo_prof}">
                         <div class="card-body">
                             <h5 class="card-title" th:text="${profesor.codigo_prof}"></h5>
                             <p class="card-text">Nombre: <span data-nombre th:text="${profesor.nombre_prof}"></span></p>
@@ -60,9 +67,16 @@
         </div>
     </div>
 
+
+	
+	<script th:replace="layout/Index :: script"></script>
+	
+	
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    
+    
     <script>
        function filtrarProfesores() {
     var nombre = document.getElementById("nombre-input").value.toLowerCase();

@@ -9,6 +9,6 @@ public class ProyectoController {
 	//Controller para iniciar la pagina
 	 @GetMapping("/")
 	public String cargarPagPrincipal() {
-		return "Index";
+		return "/layout/Index";
 	} 
 }
