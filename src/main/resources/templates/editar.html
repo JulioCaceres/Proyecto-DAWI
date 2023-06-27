@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Editar Profesor</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        .profesor-card {
+            margin-bottom: 20px;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+
+        .profesor-card:hover {
+            background-color: #f2f2f2;
+            transform: translateY(-5px);
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Editar Profesor</h1>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card profesor-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Datos del Profesor</h5>
+                        <form th:action="@{/profesores/editar}" th:object="${profesor}" method="post">
+                            <div class="form-group">
+                                <label>Código:</label>
+                                <input class="form-control" type="text" th:field="*{codigo_prof}" id="codigo-prof" readonly />
+                            </div>
+                            <div class="form-group">
+                                <label>Nombre:</label>
+                                <input class="form-control" type="text" th:field="*{nombre_prof}" id="nombre-prof" />
+                            </div>
+                            <div class="form-group">
+                                <label>Apellido:</label>
+                                <input class="form-control" type="text" th:field="*{apellido_prof}" id="apellido-prof" />
+                            </div>
+                            <div class="form-group">
+                                <label>Número de Documento:</label>
+                                <input class="form-control" type="text" th:field="*{numerodocumento_prof}" id="numerodocumento-prof" />
+                            </div>
+                            <div class="form-group">
+                                <label>Nacionalidad:</label>
+                                <input class="form-control" type="text" th:field="*{nacionalidad_prof}" id="nacionalidad-prof" />
+                            </div>
+                            <div class="form-group">
+                                <label>Celular:</label>
+                                <input class="form-control" type="text" th:field="*{celular_prof}" id="celular-prof" />
+                            </div>
+                            <div class="form-group">
+                                <label>Correo:</label>
+                                <input class="form-control" type="text" th:field="*{correo_prof}" id="correo-prof" />
+                            </div>
+                            <div class="form-group">
+                                <label>Especialidad:</label>
+                                <input class="form-control" type="text" th:field="*{espe_prof}" id="espe-prof" />
+                            </div>
+                            <button type="submit" class="btn btn-primary">Guardar</button>
+                            <a th:href="@{/profesores/listar}" class="btn btn-warning">Salir</a>
+                            <button type="button" class="btn btn-secondary" onclick="resetCard()">Reiniciar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card profesor-card" id="vista-previa-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Vista Previa</h5>
+                        <p class="card-text">Código: <span id="codigo-previo"></span></p>
+                        <p class="card-text">Nombre: <span id="nombre-previo"></span></p>
+                        <p class="card-text">Apellido: <span id="apellido-previo"></span></p>
+                        <p class="card-text">Número de Documento: <span id="numerodocumento-previo"></span></p>
+                        <p class="card-text">Nacionalidad: <span id="nacionalidad-previo"></span></p>
+                        <p class="card-text">Celular: <span id="celular-previo"></span></p>
+                        <p class="card-text">Correo: <span id="correo-previo"></span></p>
+                        <p class="card-text">Especialidad: <span id="especialidad-previo"></span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

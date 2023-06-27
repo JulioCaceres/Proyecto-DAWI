@@ -1,6 +1,8 @@
 package com.educacion.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -8,7 +10,8 @@ import jakarta.persistence.Table;
 @Table(name="tb_profesor")
 public class Profesor {
 	@Id
-	private String  codigo_prof;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int  codigo_prof;
 	private String  nombre_prof;
 	private String  apellido_prof;
 	private String  numerodocumento_prof;
@@ -17,10 +20,10 @@ public class Profesor {
 	private String  correo_prof;
 	private String  espe_prof;
 	
-	public String getCodigo_prof() {
+	public int getCodigo_prof() {
 		return codigo_prof;
 	}
-	public void setCodigo_prof(String codigo_prof) {
+	public void setCodigo_prof(int codigo_prof) {
 		this.codigo_prof = codigo_prof;
 	}
 	public String getNombre_prof() {

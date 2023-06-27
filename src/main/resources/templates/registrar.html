@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profesor</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1> Profesor</h1>
+        <form th:action="@{/profesores/registrar}" th:object="${profesor}" method="post">
+            <div class="form-group">
+                <label>Código:</label>
+                <input class="form-control" type="text" th:field="*{codigo_prof}" required maxlength="5" />
+            </div>
+            <div class="form-group">
+                <label>Nombre:</label>
+                <input class="form-control" type="text" th:field="*{nombre_prof}" required />
+            </div>
+            <div class="form-group">
+                <label>Apellido:</label>
+                <input class="form-control" type="text" th:field="*{apellido_prof}" required />
+            </div>
+            <div class="form-group">
+                <label>Número de Documento:</label>
+                <input class="form-control" type="text" th:field="*{numerodocumento_prof}" required />
+            </div>
+            <div class="form-group">
+                <label>Nacionalidad:</label>
+                <input class="form-control" type="text" th:field="*{nacionalidad_prof}" required />
+            </div>
+            <div class="form-group">
+                <label>Celular:</label>
+                <input class="form-control" type="text" th:field="*{celular_prof}" required />
+            </div>
+            <div class="form-group">
+                <label>Correo:</label>
+                <input class="form-control" type="text" th:field="*{correo_prof}" required />
+            </div>
+            <div class="form-group">
+                <label>Especialidad:</label>
+                <input class="form-control" type="text" th:field="*{espe_prof}" required />
+            </div>
+            <button type="submit" class="btn btn-primary">Registrar</button>
+        </form>
+    </div>
+</body>
+</html>
