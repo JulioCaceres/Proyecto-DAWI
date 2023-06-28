@@ -11,4 +11,9 @@ public class ProyectoController {
 	public String cargarPagPrincipal() {
 		return "/layout/Index";
 	} 
+	 
+	 @GetMapping("/Pruebas")
+		public String cargarPrueba() {
+			return "/crudalumno";
+		} 
 }

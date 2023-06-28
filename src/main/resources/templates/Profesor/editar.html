@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Editar Profesor</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -33,7 +33,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Nombre:</label>
-                                <input class="form-control" type="text" th:field="*{nombre_prof}" id="nombre-prof" />
+                                <input class="form-control" type="text" th:field="*{nombre_prof}" id="nombre-prof"  />
                             </div>
                             <div class="form-group">
                                 <label>Apellido:</label>

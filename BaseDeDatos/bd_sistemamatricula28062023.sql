@@ -25,16 +25,16 @@ DROP TABLE IF EXISTS `tb_alumno`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tb_alumno` (
-  `codigo_alum` int NOT NULL AUTO_INCREMENT,
-  `nombre_alum` varchar(45) NOT NULL,
-  `apellido_alum` varchar(45) NOT NULL,
-  `numerodocumento_alum` varchar(15) NOT NULL,
-  `nacionalidad_alum` varchar(45) NOT NULL,
-  `correo_alum` varchar(45) NOT NULL,
-  `celular_alum` varchar(15) NOT NULL,
+  `codigo_alum` varchar(5) NOT NULL,
+  `nombre_alum` varchar(255) DEFAULT NULL,
+  `apellido_alum` varchar(255) DEFAULT NULL,
+  `numerodocumento_alum` varchar(255) DEFAULT NULL,
+  `nacionalidad_alum` varchar(255) DEFAULT NULL,
+  `correo_alum` varchar(255) DEFAULT NULL,
+  `celular_alum` varchar(255) DEFAULT NULL,
   `fechanacimiento_alum` date NOT NULL,
   PRIMARY KEY (`codigo_alum`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +43,7 @@ CREATE TABLE `tb_alumno` (
 
 LOCK TABLES `tb_alumno` WRITE;
 /*!40000 ALTER TABLE `tb_alumno` DISABLE KEYS */;
-INSERT INTO `tb_alumno` VALUES (4,'ssas','sss','sss','sss','ss','ss','2023-06-03'),(5,'aaa','aaa','aa','aa','aaa','aaa','2023-06-11'),(6,'sss','ss','ss','ss','s','ss','2023-06-20'),(7,'sss','ss','ss','ss','s','ss','2023-06-20'),(10,'sadas','dadd','dd','ddd','dd','dd','2023-06-01'),(12,'ss','ssss','sss','ss','ss','ss','2023-05-31');
+INSERT INTO `tb_alumno` VALUES ('A0001','Julio','Caceres','86756453','Peruana','jcaceres@gmail.com','987654321','2002-04-19'),('A0002','Sebastian','Luna','87162537','Extranjero','sluna@gmail.com','987654321','2002-04-19');
 /*!40000 ALTER TABLE `tb_alumno` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -92,7 +92,7 @@ CREATE TABLE `tb_profesor` (
   `correo_prof` varchar(45) NOT NULL,
   `espe_prof` varchar(45) NOT NULL,
   PRIMARY KEY (`codigo_prof`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -101,7 +101,7 @@ CREATE TABLE `tb_profesor` (
 
 LOCK TABLES `tb_profesor` WRITE;
 /*!40000 ALTER TABLE `tb_profesor` DISABLE KEYS */;
-INSERT INTO `tb_profesor` VALUES (1,'carlos','aaaaaaa','aaaaaaaa','aaaaaaaa','aaaaaaa','aaaa','aaaaaaaa'),(2,'222','222','222','22','22','2','2'),(3,'333','333','33','3','3','3','3'),(4,'444','44','4','44','4','4','4'),(6,'666','66','66','66','66','66','66'),(10,'aaaaaa','aa','aa','aa','aa','aa','aaa');
+INSERT INTO `tb_profesor` VALUES (1,'Julio','aaaaaaa','aaaaaaaa','aaaaaaaa','aaaaaaa','aaaa','aaaaaaaa'),(2,'222','222','222','22','22','2','2'),(3,'333','333','33','3','3','3','3'),(4,'444','44','4','44','4','4','4'),(6,'666','66','66','66','66','66','66'),(8,'77','77','77','77','77','77','77');
 /*!40000 ALTER TABLE `tb_profesor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -122,4 +122,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-06-28 13:27:46
+-- Dump completed on 2023-06-27 11:13:55

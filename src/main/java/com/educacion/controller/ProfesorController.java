@@ -21,13 +21,14 @@ public class ProfesorController {
     @GetMapping("/listar")
     public String listarProfesores(Model model) {
         model.addAttribute("profesores", profesorRepository.findAll());
-        return "/listar";
+        return "/Profesor/listar";
     }
 
+    //Prueba
     @GetMapping("/registrar")
     public String mostrarFormularioRegistrar(Model model) {
         model.addAttribute("profesor", new Profesor());
-        return "/registrar";
+        return "/Profesor/registrar";
     }
 
     @PostMapping("/registrar")
@@ -40,7 +41,7 @@ public class ProfesorController {
     public String mostrarFormularioEditar(@PathVariable("codigo_prof") String codigoProf, Model model) {
         Profesor profesor = profesorRepository.findById(codigoProf).orElse(null);
         model.addAttribute("profesor", profesor);
-        return "/registrar";
+        return "/Profesor/editar";
     }
 
     @PostMapping("/editar")

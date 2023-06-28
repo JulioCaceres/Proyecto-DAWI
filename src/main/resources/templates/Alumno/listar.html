@@ -33,7 +33,7 @@
 	
 	
     <div class="container pt-5">
-        <h1>Lista de Profesores</h1>
+        <h1>Lista de Alumnos</h1>
         
         <div class="row mb-4">
             <div class="col-md-6">
@@ -43,23 +43,26 @@
                 <input type="text" class="form-control" id="curso-input" placeholder="Buscar por curso">
             </div>
         </div>
-        <a th:href="@{/profesores/registrar}" class="btn btn-success">Registrar Profesor</a>
+        <a th:href="@{/alumnos/registrar}" class="btn btn-success">Registrar Alumno</a>
+		<a href="/reporteListaAlumnos" target="_blank"  class="btn btn-warning">PDF - Lista alumnos</a>
+
 
         <div id="profesor-container">
             <div class="row pt-3">
-                <div class="col-md-4" th:each="profesor : ${profesores}">
-                    <div class="card profesor-card mt-3" th:id="${profesor.codigo_prof}">
+                <div class="col-md-4" th:each="a : ${alumnos}">
+                    <div class="card profesor-card mt-3" th:id="${a.codigo_alum}">
+                    
                         <div class="card-body">
-                            <h5 class="card-title" th:text="${profesor.codigo_prof}"></h5>
-                            <p class="card-text">Nombre: <span data-nombre th:text="${profesor.nombre_prof}"></span></p>
-                            <p class="card-text">Apellido: <span th:text="${profesor.apellido_prof}"></span></p>
-                            <p class="card-text">Número de Documento: <span th:text="${profesor.numerodocumento_prof}"></span></p>
-                            <p class="card-text">Nacionalidad: <span th:text="${profesor.nacionalidad_prof}"></span></p>
-                            <p class="card-text">Celular: <span th:text="${profesor.celular_prof}"></span></p>
-                            <p class="card-text">Correo: <span th:text="${profesor.correo_prof}"></span></p>
-                            <p class="card-text">Especialidad: <span data-curso th:text="${profesor.espe_prof}"></span></p>
-                            <a th:href="@{/profesores/editar/{codigo_prof}(codigo_prof=${profesor.codigo_prof})}" class="btn btn-primary">Editar</a>
-                            <a th:href="@{/profesores/eliminar/{codigo_prof}(codigo_prof=${profesor.codigo_prof})}" class="btn btn-danger">Eliminar</a>
+                            <h5 class="card-title" th:text="${a.codigo_alum}"></h5>
+                            
+                            <p class="card-text">Nombre: <span data-nombre th:text="${a.nombre_alum}"></span></p>
+                            <p class="card-text">Apellido: <span th:text="${a.apellido_alum}"></span></p>
+                            <p class="card-text">Número de Documento: <span th:text="${a.numerodocumento_alum}"></span></p>
+                            <p class="card-text">Correo: <span th:text="${a.correo_alum}"></span></p>
+                           
+                            <a th:href="@{/alumnos/editar/{codigo_alum}(codigo_alum=${a.codigo_alum})}" class="btn btn-primary">Editar</a>
+                            <a th:href="@{/alumnos/eliminar/{codigo_alum}(codigo_alum=${a.codigo_alum})}" class="btn btn-danger">Eliminar</a>
+                           
                         </div>
                     </div>
                 </div>

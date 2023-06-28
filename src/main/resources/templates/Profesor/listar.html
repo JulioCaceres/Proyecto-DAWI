@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="/layout/Index :: head">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+   
+    <style>
+        .profesor-card {
+            margin-bottom: 20px;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+
+        .profesor-card:hover {
+            background-color: #f2f2f2;
+            transform: translateY(-5px);
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin-right: -15px;
+            margin-left: -15px;
+        }    
+    </style>
+</head>
+<body>
+
+	
+	<nav th:replace="layout/Index :: nav"></nav>
+	
+	
+	
+    <div class="container pt-5">
+        <h1>Lista de Profesores</h1>
+        
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <input type="text" class="form-control" id="nombre-input" placeholder="Buscar por nombre">
+            </div>
+            <div class="col-md-6">
+                <input type="text" class="form-control" id="curso-input" placeholder="Buscar por curso">
+            </div>
+        </div>
+        <a th:href="@{/profesores/registrar}" class="btn btn-success">Registrar Profesor</a>
+		
+
+
+        <div id="profesor-container">
+            <div class="row pt-3">
+                <div class="col-md-4" th:each="profesor : ${profesores}">
+                    <div class="card profesor-card mt-3" th:id="${profesor.codigo_prof}">
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${profesor.codigo_prof}"></h5>
+                            <p class="card-text">Nombre: <span data-nombre th:text="${profesor.nombre_prof}"></span></p>
+                            <p class="card-text">Apellido: <span th:text="${profesor.apellido_prof}"></span></p>
+                            <p class="card-text">Número de Documento: <span th:text="${profesor.numerodocumento_prof}"></span></p>
+                            <p class="card-text">Nacionalidad: <span th:text="${profesor.nacionalidad_prof}"></span></p>
+                            <p class="card-text">Celular: <span th:text="${profesor.celular_prof}"></span></p>
+                            <p class="card-text">Correo: <span th:text="${profesor.correo_prof}"></span></p>
+                            <p class="card-text">Especialidad: <span data-curso th:text="${profesor.espe_prof}"></span></p>
+                            <a th:href="@{/profesores/editar/{codigo_prof}(codigo_prof=${profesor.codigo_prof})}" class="btn btn-primary">Editar</a>
+                            <a th:href="@{/profesores/eliminar/{codigo_prof}(codigo_prof=${profesor.codigo_prof})}" class="btn btn-danger">Eliminar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+	
+	<script th:replace="layout/Index :: script"></script>
+	
+	
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    
+    
+    <script>
+       function filtrarProfesores() {
+    var nombre = document.getElementById("nombre-input").value.toLowerCase();
+    var curso = document.getElementById("curso-input").value.toLowerCase();
+
+    var profesores = document.getElementsByClassName("profesor-card");
+
+    for (var i = 0; i < profesores.length; i++) {
+        var nombreProfesor = profesores[i].querySelector("[data-nombre]").innerText.toLowerCase();
+        var cursoProfesor = profesores[i].querySelector("[data-curso]").innerText.toLowerCase();
+        var divPadre = profesores[i].parentNode; // Se obtiene el div padre del elemento actual
+
+        if (nombreProfesor.indexOf(nombre) > -1 && cursoProfesor.indexOf(curso) > -1) {
+            profesores[i].style.display = "";
+            divPadre.style.display = ""; // Se muestra el div padre si se cumple el criterio de búsqueda
+        } else {
+            profesores[i].style.display = "none";
+            divPadre.style.display = "none"; // Se oculta el div padre si no se cumple el criterio de búsqueda
+        }
+    }
+}
+
+		
+        // Agregar eventos de cambio en los campos de búsqueda
+        document.getElementById("nombre-input").addEventListener("input", filtrarProfesores);
+        document.getElementById("curso-input").addEventListener("input", filtrarProfesores);
+    </script>
+</body>
+</html>

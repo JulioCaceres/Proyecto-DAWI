@@ -1,28 +1,37 @@
 package com.educacion.model;
 
 import java.sql.Date;
+import java.util.Calendar;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name="tb_alumno")
 public class Alumno {
-	@Id 
-	private String  codigo_alum;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int  codigo_alum;
 	private String  nombre_alum;
 	private String  apellido_alum;
 	private String  numerodocumento_alum;
 	private String  nacionalidad_alum;
+	@Column(unique = true)
 	private String  correo_alum;
 	private String  celular_alum;
 	private Date  fechanacimiento_alum;
 	
-	public String getCodigo_alum() {
+	
+	
+	public int getCodigo_alum() {
 		return codigo_alum;
 	}
-	public void setCodigo_alum(String codigo_alum) {
+	public void setCodigo_alum(int codigo_alum) {
 		this.codigo_alum = codigo_alum;
 	}
 	public String getNombre_alum() {
@@ -66,6 +75,13 @@ public class Alumno {
 	}
 	public void setFechanacimiento_alum(Date fechanacimiento_alum) {
 		this.fechanacimiento_alum = fechanacimiento_alum;
+	}
+	@Override
+	public String toString() {
+		return "Alumno [codigo_alum=" + codigo_alum + ", nombre_alum=" + nombre_alum + ", apellido_alum="
+				+ apellido_alum + ", numerodocumento_alum=" + numerodocumento_alum + ", nacionalidad_alum="
+				+ nacionalidad_alum + ", correo_alum=" + correo_alum + ", celular_alum=" + celular_alum
+				+ ", fechanacimiento_alum=" + fechanacimiento_alum + "]";
 	}
 	
 	

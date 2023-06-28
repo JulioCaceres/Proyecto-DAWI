@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Profesor</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -10,7 +10,7 @@
         <form th:action="@{/profesores/registrar}" th:object="${profesor}" method="post">
             <div class="form-group">
                 <label>Código:</label>
-                <input class="form-control" type="text" th:field="*{codigo_prof}" required maxlength="5" />
+                <input class="form-control" type="text" th:field="*{codigo_prof}" readonly />
             </div>
             <div class="form-group">
                 <label>Nombre:</label>
