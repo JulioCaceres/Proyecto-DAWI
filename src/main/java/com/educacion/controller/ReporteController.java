@@ -53,5 +53,23 @@ public class ReporteController {
 		}
 	}
 	
+	@GetMapping("/reporteListaProfesor")
+	public void listaProfesores(HttpServletResponse response){
+		response.setHeader("Content-Disposition", "inline;"); 
+		response.setContentType("application/pdf");
+		try {
+			// recupera el recurso a cargar (jasper)
+			String ru = resourceLoader.getResource("classpath:Reportes/profesor.jasper").getURI().getPath();
+			// "combinar" el jasper con la data / Ojo!  null -> el reporte no tiene parámetros!!
+			JasperPrint jasperPrint = JasperFillManager.fillReport(ru, null, dataSource.getConnection());
+			// java.io -> genera el archivo resultante
+			OutputStream outStream = response.getOutputStream();
+			// carga el archivo
+			JasperExportManager.exportReportToPdfStream(jasperPrint, outStream);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 }
 
